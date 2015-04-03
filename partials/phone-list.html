@@ -1,0 +1,46 @@
+<p>Nothing here {{'yet' + '!'}}</p>
+<h4>Hello, {{name}}</h4>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            Search: <input ng-model="query">
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="name">
+                    Alphabetical (Asc)
+                </option>
+                <option value="-name">
+                    Alphabetical (Desc)
+                </option>
+                <option value="age">
+                    Newest
+                </option>
+            </select>
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+            <ul>
+                <li ng-repeat="phone in ajaxPhones | filter:query | orderBy:orderProp" class="thumbnail">
+                    <a href="#/phones/{{phone.id}}"><img ng-src="{{phone.imageUrl}}"></a>
+                    <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+                    {{phone.name}}
+                    <p>{{phone.snippet}}</p>
+                </li>
+            </ul>
+            <p>Total number of phones: {{phones.length}}</p>
+            x{{orderProp}}x
+        </div>
+    </div>
+</div>
+<table>
+    <tr>
+        <th>row number</th>
+    </tr>
+    <tr ng-repeat="i in [0,1,2,3,4,5,6,7]">
+        <td>{{ i+1 }}</td>
+    </tr>
+</table>
+
+<pre>{{ajaxPhones|json}}</pre>
